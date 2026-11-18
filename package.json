@@ -1,0 +1,15 @@
+{
+  "name": "living-garden",
+  "version": "3.0.0",
+  "description": "Living Garden - gesture-grown flower garden, with local webcam or remote phone camera (WebRTC)",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/server.test.js",
+    "test:qr": "node test/qr.test.js && python3 test/qr_verify.py",
+    "test:e2e": "python3 test/e2e.py"
+  },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}

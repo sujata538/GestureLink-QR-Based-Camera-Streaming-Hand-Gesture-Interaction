@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#0a0510">
+    <title>Living Garden — Phone Camera</title>
+    <link rel="stylesheet" href="phone.css">
+</head>
+<body>
+    <main class="shell">
+        <header class="brand">
+            <span class="brand-flower">✿</span>
+            <h1>Living Garden</h1>
+            <p class="brand-sub">Phone camera</p>
+        </header>
+
+        <!-- 1. Enter code -->
+        <section class="card" id="screenCode" hidden>
+            <h2>Enter the code</h2>
+            <p class="muted">Type the 6-digit code shown on the computer.</p>
+            <input id="codeInput" class="code-input" inputmode="numeric" pattern="[0-9]*" maxlength="7"
+                   autocomplete="one-time-code" placeholder="000 000" aria-label="6-digit code">
+            <button id="connectBtn" class="btn primary" disabled>Connect</button>
+            <p class="error" id="codeError" role="alert"></p>
+        </section>
+
+        <!-- 2. Connected, ask for camera -->
+        <section class="card" id="screenReady" hidden>
+            <div class="badge ok">✓ Connected to the computer</div>
+            <h2>Share your camera</h2>
+            <p class="muted">
+                Your camera turns on only after you tap the button below.
+                The video goes straight to the computer that showed the code.
+                It is not recorded or stored, and you can stop at any time.
+            </p>
+
+            <div class="seg" role="radiogroup" aria-label="Which camera">
+                <label><input type="radio" name="facing" value="user" checked><span>🤳 Front camera</span></label>
+                <label><input type="radio" name="facing" value="environment"><span>📷 Rear camera</span></label>
+            </div>
+
+            <button id="startBtn" class="btn primary big">Allow camera &amp; start sharing</button>
+            <p class="tip">Tip: hold your phone <strong>sideways</strong> for the best view.</p>
+            <p class="error" id="camError" role="alert"></p>
+        </section>
+
+        <!-- 3. Live -->
+        <section class="live" id="screenLive" hidden>
+            <video id="preview" autoplay playsinline muted></video>
+            <div class="live-top">
+                <span class="rec"><i></i> LIVE</span>
+                <span id="liveStatus" class="live-status">Connecting…</span>
+            </div>
+            <div class="live-bottom">
+                <button id="flipBtn" class="btn ghost">🔄 Switch camera</button>
+                <button id="stopBtn" class="btn danger">Stop sharing</button>
+            </div>
+        </section>
+
+        <!-- 4. Ended / fatal -->
+        <section class="card" id="screenEnded" hidden>
+            <h2 id="endedTitle">Sharing stopped</h2>
+            <p class="muted" id="endedText">Your camera is off.</p>
+            <button id="againBtn" class="btn primary">Start again</button>
+        </section>
+
+        <p class="foot" id="insecureNote" hidden></p>
+    </main>
+    <script src="phone.js"></script>
+</body>
+</html>
